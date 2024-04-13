@@ -1,0 +1,94 @@
+header {
+    background-color: #FFFDD0;
+    text-align: center;
+    height: 60px;
+}
+
+h1 {
+    padding-top: 10px;
+}
+
+.main-container {
+    width: 100%;
+    margin: 0 auto; /* Wyśrodkowanie kontenera */
+    padding-top: 20px;
+    box-sizing: border-box; /* Model pudełkowy - uwzględnienie paddingu i obramowania w szerokości */
+}
+
+.left_container {
+    width: 20%;
+    height: 530px;
+    float: left;
+    background-color: #990033; /* Kolor tła dla lewego kontenera (do wizualizacji) */
+    box-sizing: border-box; /* Model pudełkowy */
+    padding: 10px; /* Dodanie odstępu wewnątrz kontenera */
+    padding-top:20px;
+    text-align: center;
+}
+
+.right_container {
+    width: 80%;
+    float: left;
+    box-sizing: border-box; /* Model pudełkowy */
+    padding: 40px; /* Dodanie odstępu wewnątrz kontenera */
+}
+
+/* Klasa clear - wyczyszczenie obu stron float, aby uniknąć problemów z przepływem */
+.clear {
+    clear: both;
+}
+
+footer {
+    background-color: #FFFDD0;
+    text-align: center; /* Wyśrodkowanie tekstu w stopce */
+    height: 40px;
+}
+
+h3 {
+    padding-top: 10px;
+}
+
+.menu {
+   background-color: #FFFDD0;
+   margin: 10px;
+   margin-top:20px;
+   padding: 5px;
+   border-radius: 20px; /* Zaokrąglenie rogów o promieniu 10 pikseli */
+}
+
+button {
+    background-color: #990033;
+    border-radius: 20px;
+    color: black;
+    border: 2px solid #990033;
+    width: 90%;
+    padding:5px;
+}
+
+button:hover {
+    background-color: #FFFDD0;
+    color: #990033;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none; /* Usunięcie podkreślenia */
+    color: black;
+}
+
+a:hover{
+    color: #990033;
+}
+
+#czas_nazwa, #data_nazwa {
+    font-weight: bold; /* Pogrubienie tekstu */
+}
+
+#data_nazwa, #data {
+    margin-top: 10px;
+    display: inline-block;
+}
+
+#czas_nazwa, #czas {
+    display: inline-block; /* Ustawienie na inline-block */
+}
