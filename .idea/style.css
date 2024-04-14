@@ -56,16 +56,17 @@ h3 {
    border-radius: 20px; /* Zaokrąglenie rogów o promieniu 10 pikseli */
 }
 
-button {
+.button_menu {
     background-color: #990033;
     border-radius: 20px;
     color: black;
     border: 2px solid #990033;
     width: 90%;
     padding:5px;
+    transition: background-color 0.3s;
 }
 
-button:hover {
+.button_menu:hover {
     background-color: #FFFDD0;
     color: #990033;
     cursor: pointer;
@@ -91,4 +92,39 @@ a:hover{
 
 #czas_nazwa, #czas {
     display: inline-block; /* Ustawienie na inline-block */
+}
+
+#calc_hed {
+    font-size: 20px;
+    margin-top: 0px;
+}
+
+#additionInput, #divisionInput, #quadraticInput{
+    display: none;
+    margin-top:15px;
+    margin-bottom:0px;
+    padding: 0px;
+}
+
+#addiv, #didiv, #qudiv{
+    margin-bottom:15px;
+}
+
+#cal_but{
+    border-bottom: 2px solid #808080;
+    padding-bottom: 15px;
+}
+
+#clearbut{
+    padding-top:15px;
+}
+
+table {
+    width: 100%; /* Ustaw szerokość tabeli na 100% */
+    border-collapse: collapse; /* Zleca scalenie granic komórek */
+}
+th, td {
+    border: 1px solid #000; /* Ustaw obramowanie dla komórek */
+    padding: 8px; /* Ustaw wewnętrzny padding dla komórek */
+    text-align: center; /* Wyrównaj tekst do lewej */
 }
