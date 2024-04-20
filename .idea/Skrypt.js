@@ -1,5 +1,17 @@
 var idOperacji=0;
 
+function wyczyscliste(){
+    var myTable = document.getElementById("myTable");
+    // Pobieramy wszystkie wiersze z tabeli
+    var rows = myTable.getElementsByTagName("tr");
+
+    // Usuwamy wiersze, zaczynając od końca, aby uniknąć problemów z iteracją
+    for (var i = rows.length - 1; i > 0; i--) {
+        myTable.deleteRow(i);
+    }
+    idOperacji=0;
+}
+
 function wyswietlCzas() {
     var dzisiaj = new Date();
     var godzina = dzisiaj.getHours();
@@ -156,7 +168,6 @@ function rowkwadrat(){
 function sprawdzZaznaczenie() {
     var radioButtons = document.getElementsByName("myRadio");
     var dzialanie;
-
     for (var i = 0; i < radioButtons.length; i++) {
         if (radioButtons[i].checked) {
             dzialanie = radioButtons[i].value;
@@ -164,7 +175,6 @@ function sprawdzZaznaczenie() {
             break; // przerywamy pętlę, gdy znajdziemy zaznaczony przycisk
         }
     }
-
     wywolaj_dzialanie(dzialanie);
 }
 
@@ -187,7 +197,6 @@ function wywolaj_dzialanie(x){
         }
     }
 }
-
 
 window.onload = function() {
     wyswietlDate()
