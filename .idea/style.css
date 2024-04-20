@@ -34,13 +34,11 @@ h1 {
 }
 
 #image {
-    width:200px;
-    height:200px;
+    width:150px;
+    height:150px;
     object-fit: cover;
     object-position: center;
-    margin-top:20px;
-    margin-left: 10px;
-    margin-right: 10px;
+    padding: 10px;
 }
 
 #data_tekst, #czas_tekst {
