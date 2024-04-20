@@ -1,7 +1,14 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height:100vh;
+}
+
 header {
     background-color: #FFFDD0;
     text-align: center;
-    height: 60px;
 }
 
 h1 {
@@ -9,27 +16,39 @@ h1 {
 }
 
 .main-container {
-    width: 100%;
-    margin: 0 auto; /* Wyśrodkowanie kontenera */
-    padding-top: 20px;
-    box-sizing: border-box; /* Model pudełkowy - uwzględnienie paddingu i obramowania w szerokości */
+    margin-top:10px;
+    margin-bottom:10px;
+    display: flex;
+    flex:1;
 }
 
 .left_container {
-    width: 20%;
-    height: 530px;
-    float: left;
+    flex:2;
     background-color: #990033; /* Kolor tła dla lewego kontenera (do wizualizacji) */
-    box-sizing: border-box; /* Model pudełkowy */
-    padding: 10px; /* Dodanie odstępu wewnątrz kontenera */
-    padding-top:20px;
-    text-align: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+#image {
+    width:200px;
+    height:200px;
+    object-fit: cover;
+    object-position: center;
+    margin-top:20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#data_tekst, #czas_tekst {
+    font-weight: bold;
 }
 
 .right_container {
-    width: 80%;
-    float: left;
-    box-sizing: border-box; /* Model pudełkowy */
+    flex:6;
     padding: 40px; /* Dodanie odstępu wewnątrz kontenera */
 }
 
@@ -41,7 +60,6 @@ h1 {
 footer {
     background-color: #FFFDD0;
     text-align: center; /* Wyśrodkowanie tekstu w stopce */
-    height: 40px;
 }
 
 h3 {
@@ -49,11 +67,28 @@ h3 {
 }
 
 .menu {
+   width: 70%;
    background-color: #FFFDD0;
    margin: 10px;
    margin-top:20px;
    padding: 5px;
    border-radius: 20px; /* Zaokrąglenie rogów o promieniu 10 pikseli */
+   margin-bottom:20px;
+}
+
+li {
+  list-style: none;
+  margin: 5px 10px;
+  text-align: center;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .button_menu {
@@ -81,18 +116,7 @@ a:hover{
     color: #990033;
 }
 
-#czas_nazwa, #data_nazwa {
-    font-weight: bold; /* Pogrubienie tekstu */
-}
 
-#data_nazwa, #data {
-    margin-top: 10px;
-    display: inline-block;
-}
-
-#czas_nazwa, #czas {
-    display: inline-block; /* Ustawienie na inline-block */
-}
 
 #calc_hed {
     font-size: 20px;
@@ -123,8 +147,35 @@ table {
     width: 100%; /* Ustaw szerokość tabeli na 100% */
     border-collapse: collapse; /* Zleca scalenie granic komórek */
 }
+
 th, td {
     border: 1px solid #000; /* Ustaw obramowanie dla komórek */
     padding: 8px; /* Ustaw wewnętrzny padding dla komórek */
     text-align: center; /* Wyrównaj tekst do lewej */
+}
+
+@media only screen and (max-width: 600px){
+    .main-container {
+        flex-direction: column;
+    }
+    .left_container {
+        width:100%;
+        margin-right:20px;
+    }
+    .menu {
+        display: none;
+    }
+    #rozw_d {
+        display: block;
+        font-size: 1vw;
+        border-style: none;
+        width: 150px;
+        padding: 5px;
+        margin-bottom: 5px;
+        border-radius: 30px;
+    }
+}
+
+#rozw_d{
+    display: block;
 }

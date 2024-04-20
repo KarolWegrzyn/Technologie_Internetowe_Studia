@@ -1,3 +1,5 @@
+var idOperacji=0;
+
 function wyswietlCzas() {
     var dzisiaj = new Date();
     var godzina = dzisiaj.getHours();
@@ -38,20 +40,68 @@ function showInput(inputType) {
     inputToShow.style.display = 'block';
 }
 
+function sprawdzCzyLiczba(dane) {
+    if (isNaN(dane)) {
+        console.log(false)
+        return false; // Wartość nie jest liczbą
+    } else {
+        console.log(true)
+        return true; // Wartość jest liczbą
+    }
+}
+
 function dodawanie(){
     var input1 = document.getElementById("input1_+");
     var input2 = document.getElementById("input2_+");
 
-    console.log(parseFloat(input1.value) + parseFloat(input2.value));
-    alert(parseFloat(input1.value) + parseFloat(input2.value));
+    if(sprawdzCzyLiczba(input1.value) && sprawdzCzyLiczba(input2.value)){
+        console.log(parseFloat(input1.value) + parseFloat(input2.value));
+
+        idOperacji++;
+        var tabela = document.querySelector("table");
+        var nowyWiersz = tabela.insertRow(1);
+
+        var komorka1 = nowyWiersz.insertCell(0);
+        var komorka2 = nowyWiersz.insertCell(1);
+        var komorka3 = nowyWiersz.insertCell(2);
+
+        komorka1.innerHTML = idOperacji;
+        komorka2.innerHTML = parseFloat(input1.value) + " + " + parseFloat(input2.value) + " = X";
+        komorka3.innerHTML = parseFloat(input1.value) + parseFloat(input2.value);
+    }
+    else{
+        alert("Podaj poprawne dane!");
+    }
+
 }
 
 function dzielenie(){
     var input1 = document.getElementById("input1_/");
     var input2 = document.getElementById("input2_/");
 
-    console.log(parseFloat(input1.value) / parseFloat(input2.value));
-    alert(parseFloat(input1.value) / parseFloat(input2.value));
+    if(sprawdzCzyLiczba(input1.value) && sprawdzCzyLiczba(input2.value)){
+     console.log(parseFloat(input1.value) / parseFloat(input2.value));
+
+        idOperacji++;
+        var tabela = document.querySelector("table");
+        var nowyWiersz = tabela.insertRow(1);
+
+        var komorka1 = nowyWiersz.insertCell(0);
+        var komorka2 = nowyWiersz.insertCell(1);
+        var komorka3 = nowyWiersz.insertCell(2);
+
+        komorka1.innerHTML = idOperacji;
+        komorka2.innerHTML = parseFloat(input1.value) + " / " + parseFloat(input2.value) + " = X";
+
+        if(parseFloat(input2.value)!=0)
+            komorka3.innerHTML = parseFloat(input1.value) / parseFloat(input2.value);
+        else
+            komorka3.innerHTML = "ERROR"
+    }
+    else{
+        alert("Podaj poprawne dane!");
+    }
+
 }
 
 function rowkwadrat(){
@@ -59,23 +109,47 @@ function rowkwadrat(){
     var input2 = document.getElementById("input2_x");
     var input3 = document.getElementById("input3_x");
 
-    var a = parseFloat(input1.value)
-    var b = parseFloat(input2.value)
-    var c = parseFloat(input3.value)
+    if(sprawdzCzyLiczba(input1.value) && sprawdzCzyLiczba(input2.value)){
+        idOperacji++;
+        var tabela = document.querySelector("table");
+        var nowyWiersz = tabela.insertRow(1);
 
-    var delta = b * b - 4 * a * c;
-    var pierwiastekDelta = Math.sqrt(delta);
-    var x1, x2;
+        var komorka1 = nowyWiersz.insertCell(0);
+        var komorka2 = nowyWiersz.insertCell(1);
+        var komorka3 = nowyWiersz.insertCell(2);
 
-    if (delta > 0) {
-        x1 = (-b + pierwiastekDelta) / (2 * a);
-        x2 = (-b - pierwiastekDelta) / (2 * a);
-        console.log("wynik: " ,x1, x2);
-    } else if (delta === 0) {
-        x1 = -b / (2 * a);
-        console.log("wynik: " ,x1)
-    } else {
-        return []; // Brak rozwiązań, delta < 0
+        var a = parseFloat(input1.value)
+        var b = parseFloat(input2.value)
+        var c = parseFloat(input3.value)
+
+        var delta = b * b - 4 * a * c;
+        var pierwiastekDelta = Math.sqrt(delta);
+        var x1, x2;
+
+        komorka1.innerHTML = idOperacji;
+
+        if(b>0 && c>0)
+            komorka2.innerHTML = a +" x^2 + "+ b +" x + "+ c;
+        else if(b>0)
+            komorka2.innerHTML = a +" x^2 + "+ b +" x "+ c;
+        else if(b<0 && c<=0)
+            komorka2.innerHTML = a +" x^2 "+ b +" x "+ c;
+        else if(b<0 && c>0)
+            komorka2.innerHTML = a +" x^2 "+ b +" x +"+ c;
+
+        if (delta > 0) {
+            x1 = (-b + pierwiastekDelta) / (2 * a);
+            x2 = (-b - pierwiastekDelta) / (2 * a);
+            komorka3.innerHTML =  x1 + "       " +x2;
+        } else if (delta === 0) {
+            x1 = -b / (2 * a);
+            komorka3.innerHTML = x1;
+        } else {
+            komorka3.innerHTML = "ERROR Δ < 0"; // Brak rozwiązań, delta < 0
+        }
+    }
+    else{
+        alert("Podaj poprawne dane!");
     }
 }
 
@@ -96,26 +170,27 @@ function sprawdzZaznaczenie() {
 
 function wywolaj_dzialanie(x){
     switch(x){
-    case "1":
-    {
-        console.log("dziala case 1");
-        break;
-    }
-   case "2":
-    {
-        console.log("dziala case 2");
-        break;
-    }
-    case "3":
-    {
-        console.log("dziala case 3");
-        break;
-    }
-
+        case "1":
+        {
+            dodawanie()
+            break;
+        }
+       case "2":
+        {
+            dzielenie()
+            break;
+        }
+        case "3":
+        {
+            rowkwadrat()
+            break;
+        }
     }
 }
+
 
 window.onload = function() {
     wyswietlDate()
     wyswietlCzas();
 };
+
