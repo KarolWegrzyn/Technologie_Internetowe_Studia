@@ -203,3 +203,23 @@ window.onload = function() {
     wyswietlCzas();
 };
 
+const roz_men = document.querySelector(".roz_men");
+const menu = document.querySelector(".menu");
+
+const showMenu = () => {
+  if (menu.style.display === "none") {
+    menu.style.display = "block";
+  } else {
+    menu.style.display = "none";
+  }
+};
+
+roz_men.addEventListener("click", showMenu);
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth < 600) {
+    document.querySelector(".menu").style.display = "none";
+  } else {
+    document.querySelector(".menu").style.display = "block";
+  }
+});
